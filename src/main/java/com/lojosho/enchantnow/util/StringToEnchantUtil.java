@@ -8,12 +8,14 @@ import com.willfp.ecoenchants.enchantments.EcoEnchant;
 import com.willfp.ecoenchants.enchantments.EcoEnchants;
 import org.bukkit.enchantments.Enchantment;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 public class StringToEnchantUtil {
 
     private static BiMap<String, Enchantment> enchantMap = HashBiMap.create();
+    private static HashMap<Enchantment, Integer> enchantMaxLevel = new HashMap<>();
 
     public static void setup() {
         enchantMap.put("AQUA_AFFINITY", Enchantment.WATER_WORKER);
@@ -60,6 +62,10 @@ public class StringToEnchantUtil {
             for (EcoEnchant ench : EcoEnchants.values()) {
                 enchantMap.put(ench.getName().toUpperCase(Locale.ROOT), ench);
             }
+        }
+
+        for (Enchantment ench : values()) {
+            enchantMaxLevel.put(ench, ench.getMaxLevel());
         }
     }
 
