@@ -24,6 +24,12 @@ public class EnchantBookCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.isOp() && !sender.hasPermission("enchantnow.givebook")) {
+            SendMessageUtil.sendConfigMessage(sender, "messages.noPermission");
+            return true;
+        }
+
+
         if (args.length == 0) {
             SendMessageUtil.sendConfigMessage(sender, "messages.sendBookUsage");
             return true;

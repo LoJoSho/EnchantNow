@@ -21,6 +21,11 @@ public class EnchantCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.isOp() && !sender.hasPermission("enchantnow.enchant")) {
+            SendMessageUtil.sendConfigMessage(sender, "messages.noPermission");
+            return true;
+        }
+
         if (args.length == 0) {
             SendMessageUtil.sendConfigMessage(sender, "messages.sendEnchantUsage");
             return true;
