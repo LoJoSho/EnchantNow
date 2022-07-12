@@ -9,3 +9,5 @@ softdepend:
 commands:
   enchantbook:
     description: "Basic enchantment command"
+  enchant:
+    description: "An enchant command"
