@@ -24,6 +24,11 @@ public class EnchantBookCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length == 0) {
+            SendMessageUtil.sendConfigMessage(sender, "messages.sendBookUsage");
+            return true;
+        }
+
         ItemStack item = null;
         enchantCommandProcess(sender, args, item);
         return true;
@@ -40,7 +45,7 @@ public class EnchantBookCommand implements CommandExecutor {
                 player = ((Player) sender).getPlayer();
             } else {
                 if (args.length < 3) {
-                    sender.sendMessage("Improper arguments 1");
+                    SendMessageUtil.sendConfigMessage(sender, "messages.improperArguments");
                     return;
                 }
             }
@@ -58,7 +63,6 @@ public class EnchantBookCommand implements CommandExecutor {
             for (Enchantment enchant : hashyEnchants.keySet()) {
 
                 if (enchant == null) {
-                    sender.sendMessage("enchantemnt is null");
                     return;
                 }
 

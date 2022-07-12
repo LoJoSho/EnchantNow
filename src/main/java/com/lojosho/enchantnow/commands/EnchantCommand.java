@@ -4,6 +4,7 @@ import com.lojosho.enchantnow.util.EnchantArgProcessing;
 import com.lojosho.enchantnow.util.EnchantItem;
 import com.lojosho.enchantnow.util.SendMessageUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,10 +21,29 @@ public class EnchantCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length == 0) {
+            SendMessageUtil.sendConfigMessage(sender, "messages.sendEnchantUsage");
+            return true;
+        }
+
+
         ItemStack item = null;
         if (sender instanceof Player) {
             item = ((Player) sender).getInventory().getItemInMainHand();
+        } else {
+            if (args.length == 2) {
+                item = Bukkit.getPlayer(args[1]).getInventory().getItemInMainHand();
+            } else {
+                SendMessageUtil.sendConfigMessage(sender, "messages.sendEnchantUsage");
+                return true;
+            }
         }
+
+        if (item.getType().equals(Material.AIR)) {
+            SendMessageUtil.sendConfigMessage(sender, "messages.noEnchantAir");
+            return true;
+        }
+
         addEnchantItem(args, sender, item);
         return true;
     }
@@ -39,7 +59,7 @@ public class EnchantCommand implements CommandExecutor {
                 player = ((Player) sender).getPlayer();
             } else {
                 if (args.length < 2) {
-                    sender.sendMessage("Improper arguments 1");
+                    SendMessageUtil.sendConfigMessage(sender, "messages.improperArguments");
                     return;
                 }
             }
@@ -53,7 +73,6 @@ public class EnchantCommand implements CommandExecutor {
             for (Enchantment enchant : hashyEnchants.keySet()) {
 
                 if (enchant == null) {
-                    sender.sendMessage("enchantemnt is null");
                     return;
                 }
 
