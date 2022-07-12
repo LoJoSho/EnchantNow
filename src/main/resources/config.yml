@@ -6,3 +6,4 @@ messages:
   sendBookUsage: "<YELLOW>/enchantbook enchant:level,enchant:level,enchant:level (amount) (player)"
   sendEnchantUsage: "<YELLOW>/enchant enchant:level,enchant:level,enchant:level (player)"
   improperArguments: "<RED>Improper Arguments"
+  noPermission: "<RED>No permission."
