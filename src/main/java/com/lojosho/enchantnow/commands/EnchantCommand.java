@@ -22,14 +22,6 @@ public class EnchantCommand implements CommandExecutor {
         ItemStack item = null;
         if (sender instanceof Player) {
             item = ((Player) sender).getInventory().getItemInMainHand();
-            sender.sendMessage(item.toString());
-        } else {
-            if (args.length == 2) {
-                item = Bukkit.getPlayer(args[1]).getInventory().getItemInMainHand();
-            } else {
-                sender.sendMessage("Need proper arguments");
-                return true;
-            }
         }
         addEnchantItem(args, sender, item);
         return true;
@@ -39,9 +31,8 @@ public class EnchantCommand implements CommandExecutor {
 
     private static void addEnchantItem(String[] args, CommandSender sender, ItemStack item) {
         Player player = null;
-        ItemMeta itemMeta = item.getItemMeta();
 
-        if (args.length >= 1 && args.length < 4) {
+        if (args.length >= 1 && args.length < 3) {
 
             if (sender instanceof Player) {
                 player = ((Player) sender).getPlayer();
@@ -59,14 +50,19 @@ public class EnchantCommand implements CommandExecutor {
 
 
             for (Enchantment enchant : hashyEnchants.keySet()) {
-                if (item == null) return;
-                itemMeta.addEnchant(enchant, hashyEnchants.get(enchant), true);
+
+                if (enchant == null) {
+                    sender.sendMessage("enchantemnt is null");
+                    return;
+                }
+
+                if (item == null) {
+                    EnchantItem.enchantItem(enchant, hashyEnchants.get(enchant));
+                } else {
+                    EnchantItem.enchantItem(enchant, hashyEnchants.get(enchant), item);
+                }
             }
-            item.setItemMeta(itemMeta);
             return;
         }
-        sender.sendMessage("Improper arguments");
-
-        return;
     }
 }
