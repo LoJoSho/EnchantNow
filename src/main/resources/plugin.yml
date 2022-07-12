@@ -11,3 +11,12 @@ commands:
     description: "Basic enchantment command"
   enchant:
     description: "An enchant command"
+  enchantreload:
+    description: "Reloads the plugin"
+permissions:
+  enchantnow.reload:
+    default: false
+  enchantnow.givebook:
+    default: false
+  enchantnow.enchant:
+    default: false
