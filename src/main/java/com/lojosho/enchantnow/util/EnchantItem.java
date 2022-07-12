@@ -19,7 +19,7 @@ public class EnchantItem {
      */
     public static ItemStack enchantItem(Enchantment enchantment, int level) {
         ItemStack item = new ItemStack(Material.ENCHANTED_BOOK);
-        item.setItemMeta(applyEnchant(enchantment, level, item.getItemMeta()));
+        item.setItemMeta(applyEnchant(enchantment, level, item).getItemMeta());
         return item;
     }
 
@@ -31,7 +31,7 @@ public class EnchantItem {
      * @return
      */
     public static ItemStack enchantItem(Enchantment enchantment, int level, ItemStack item) {
-        item.setItemMeta(applyEnchant(enchantment, level, item.getItemMeta()));
+        item.setItemMeta(applyEnchant(enchantment, level, item).getItemMeta());
         return item;
     }
 
@@ -42,9 +42,16 @@ public class EnchantItem {
      * @param item
      * @return
      */
-    private static ItemMeta applyEnchant(Enchantment enchantment, int level, ItemMeta item) {
-        EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item;
-        meta.addStoredEnchant(enchantment, level, true);
-        return meta;
+    private static ItemStack applyEnchant(Enchantment enchantment, int level, ItemStack item) {
+        if (item.getType().equals(Material.ENCHANTED_BOOK)) {
+            EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
+            meta.addStoredEnchant(enchantment, level, true);
+            item.setItemMeta(meta);
+        } else {
+            ItemMeta meta = item.getItemMeta();
+            meta.addEnchant(enchantment, level, true);
+            item.setItemMeta(meta);
+        }
+        return item;
     }
 }
