@@ -2,6 +2,7 @@ package com.lojosho.enchantnow.commands;
 
 import com.lojosho.enchantnow.util.EnchantArgProcessing;
 import com.lojosho.enchantnow.util.EnchantItem;
+import com.lojosho.enchantnow.util.SendMessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -62,6 +63,8 @@ public class EnchantCommand implements CommandExecutor {
                     EnchantItem.enchantItem(enchant, hashyEnchants.get(enchant), item);
                 }
             }
+
+            SendMessageUtil.sendConfigMessage(sender, "messages.sendEnchant");
             return;
         }
     }

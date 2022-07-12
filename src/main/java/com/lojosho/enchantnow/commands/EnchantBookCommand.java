@@ -2,6 +2,10 @@ package com.lojosho.enchantnow.commands;
 
 import com.lojosho.enchantnow.util.EnchantArgProcessing;
 import com.lojosho.enchantnow.util.EnchantItem;
+import com.lojosho.enchantnow.util.SendMessageUtil;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,6 +17,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 
 public class EnchantBookCommand implements CommandExecutor {
+
+    private static TagResolver placeholders;
 
     // /enchant unbreaking:1,blastmining:2 1 playerName
 
@@ -64,6 +70,7 @@ public class EnchantBookCommand implements CommandExecutor {
             }
             item.setAmount(amount);
             player.getInventory().addItem(item);
+            SendMessageUtil.sendConfigMessage(sender, "messages.sendBook");
             return;
         }
         sender.sendMessage("Improper arguments");
