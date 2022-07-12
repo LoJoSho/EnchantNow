@@ -1,9 +1,6 @@
 package com.lojosho.enchantnow;
 
-import com.lojosho.enchantnow.commands.EnchantBookCommand;
-import com.lojosho.enchantnow.commands.EnchantBookTabComplete;
-import com.lojosho.enchantnow.commands.EnchantCommand;
-import com.lojosho.enchantnow.commands.EnchantTabComplete;
+import com.lojosho.enchantnow.commands.*;
 import com.lojosho.enchantnow.util.StringToEnchantUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,6 +34,8 @@ public final class EnchantNow extends JavaPlugin {
 
         getServer().getPluginCommand("enchant").setExecutor(new EnchantCommand());
         getServer().getPluginCommand("enchant").setTabCompleter(new EnchantTabComplete());
+
+        getServer().getPluginCommand("enchantreload").setExecutor(new EnchantReload());
     }
 
     @Override
@@ -50,5 +49,11 @@ public final class EnchantNow extends JavaPlugin {
 
     public static EnchantNow getInstance() {
         return instance;
+    }
+
+    public void reload() {
+        instance = this;
+        StringToEnchantUtil.setup();
+        reloadConfig();
     }
 }

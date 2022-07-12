@@ -18,6 +18,8 @@ public class StringToEnchantUtil {
     private static HashMap<Enchantment, Integer> enchantMaxLevel = new HashMap<>();
 
     public static void setup() {
+        enchantMap.clear();
+
         enchantMap.put("AQUA_AFFINITY", Enchantment.WATER_WORKER);
         enchantMap.put("BANE_OF_ARTHROPODS", Enchantment.DAMAGE_ARTHROPODS);
         enchantMap.put("BINDING_CURSE", Enchantment.BINDING_CURSE);
