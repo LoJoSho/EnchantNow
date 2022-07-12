@@ -64,7 +64,7 @@ public class EnchantCommand implements CommandExecutor {
                 }
             }
             if (args.length >= 2) {
-                player = Bukkit.getPlayer(args[2]);
+                player = Bukkit.getPlayer(args[1]);
             }
 
             HashMap<Enchantment, Integer> hashyEnchants = EnchantArgProcessing.processArgs(args[0]);
