@@ -1,5 +1,7 @@
 settings:
   enableEnchantCommand: true # Enabled/Disabled /enchant as a command
 
-
+# We use MiniMessage! https://docs.adventure.kyori.net/minimessage/format.html
 messages:
+  sendBook: "<YELLOW>You have sent an enchanted book!"
+  sendEnchant: "<YELLOW>You have enchanted an item!"
