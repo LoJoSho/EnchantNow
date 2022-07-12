@@ -42,6 +42,7 @@ public class EnchantBookTabComplete implements TabCompleter {
             }
 
             StringUtil.copyPartialMatches(processedArg, processedEnchants, completitions);
+
         }
         else if (args.length == 2) {
 

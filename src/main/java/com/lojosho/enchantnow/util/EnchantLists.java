@@ -16,14 +16,8 @@ public class EnchantLists {
 
         List<String> enchants = new ArrayList<>();
 
-        for (Enchantment enchantment : Enchantment.values()) {
+        for (Enchantment enchantment : StringToEnchantUtil.values()) {
             enchants.add(enchantment.getKey().getKey() + ":" + enchantment.getMaxLevel());
-        }
-
-        if (EnchantNow.hasEcoEnchantments()) {
-            for (Enchantment enchantment : EcoEnchants.values()) {
-                enchants.add(enchantment.getName() + ":" + enchantment.getMaxLevel());
-            }
         }
 
         return enchants;

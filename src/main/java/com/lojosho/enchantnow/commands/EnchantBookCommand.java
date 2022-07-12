@@ -50,10 +50,16 @@ public class EnchantBookCommand implements CommandExecutor {
 
 
             for (Enchantment enchant : hashyEnchants.keySet()) {
+
+                if (enchant == null) {
+                    sender.sendMessage("enchantemnt is null");
+                    return;
+                }
+
                 if (item == null) {
-                    item = EnchantItem.enchantItem(enchant.toString(), hashyEnchants.get(enchant));
+                    item = EnchantItem.enchantItem(enchant, hashyEnchants.get(enchant));
                 } else {
-                    item = EnchantItem.enchantItem(enchant.toString(), hashyEnchants.get(enchant), item);
+                    item = EnchantItem.enchantItem(enchant, hashyEnchants.get(enchant), item);
                 }
             }
             item.setAmount(amount);

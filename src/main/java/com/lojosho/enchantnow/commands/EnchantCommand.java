@@ -22,6 +22,7 @@ public class EnchantCommand implements CommandExecutor {
         ItemStack item = null;
         if (sender instanceof Player) {
             item = ((Player) sender).getInventory().getItemInMainHand();
+            sender.sendMessage(item.toString());
         } else {
             if (args.length == 2) {
                 item = Bukkit.getPlayer(args[1]).getInventory().getItemInMainHand();

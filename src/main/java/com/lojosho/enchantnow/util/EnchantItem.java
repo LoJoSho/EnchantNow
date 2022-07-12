@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class EnchantItem {
@@ -16,7 +17,7 @@ public class EnchantItem {
      * @param level
      * @return
      */
-    public static ItemStack enchantItem(String enchantment, int level) {
+    public static ItemStack enchantItem(Enchantment enchantment, int level) {
         ItemStack item = new ItemStack(Material.ENCHANTED_BOOK);
         item.setItemMeta(applyEnchant(enchantment, level, item.getItemMeta()));
         return item;
@@ -29,7 +30,7 @@ public class EnchantItem {
      * @param item
      * @return
      */
-    public static ItemStack enchantItem(String enchantment, int level, ItemStack item) {
+    public static ItemStack enchantItem(Enchantment enchantment, int level, ItemStack item) {
         item.setItemMeta(applyEnchant(enchantment, level, item.getItemMeta()));
         return item;
     }
@@ -41,18 +42,9 @@ public class EnchantItem {
      * @param item
      * @return
      */
-    private static ItemMeta applyEnchant(String enchantment, int level, ItemMeta item) {
-
-        if (Enchantment.getByKey(NamespacedKey.minecraft(enchantment)) != null) {
-            item.addEnchant(Enchantment.getByKey(NamespacedKey.minecraft(enchantment)), level, true);
-        }
-        else if (EnchantNow.hasEcoEnchantments()) {
-            if (EcoEnchants.getByName(enchantment) != null) {
-                EcoEnchant enchant = EcoEnchants.getByName(enchantment);
-                item.addEnchant(enchant, level, true);
-            }
-        }
-
-        return item;
+    private static ItemMeta applyEnchant(Enchantment enchantment, int level, ItemMeta item) {
+        EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item;
+        meta.addStoredEnchant(enchantment, level, true);
+        return meta;
     }
 }

@@ -1,5 +1,6 @@
 package com.lojosho.enchantnow.util;
 
+import com.lojosho.enchantnow.EnchantNow;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
@@ -34,8 +35,8 @@ public class EnchantArgProcessing {
 
             for (String c : secondSplit) {
                 if (count.equals(1)) {
-                    enchantname = Enchantment.getByKey(NamespacedKey.minecraft(c));
-                    count = count++;
+                    enchantname = StringToEnchantUtil.getEnchantment(c);
+                    count = count + 1;
                 } else {
                     level = Integer.parseInt(c);
                 }

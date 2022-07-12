@@ -3,6 +3,7 @@ package com.lojosho.enchantnow;
 import com.lojosho.enchantnow.commands.EnchantBookCommand;
 import com.lojosho.enchantnow.commands.EnchantBookTabComplete;
 import com.lojosho.enchantnow.commands.EnchantCommand;
+import com.lojosho.enchantnow.util.StringToEnchantUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -27,6 +28,8 @@ public final class EnchantNow extends JavaPlugin {
             hasEcoEnchants = true;
             getLogger().info("Found EcoEnchants, enabling EcoEnchants integration...");
         }
+
+        StringToEnchantUtil.setup();
 
         getServer().getPluginCommand("enchantbook").setExecutor(new EnchantBookCommand());
         getServer().getPluginCommand("enchantbook").setTabCompleter(new EnchantBookTabComplete());
