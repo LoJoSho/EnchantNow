@@ -1,0 +1,11 @@
+name: EnchantNow
+version: '${version}'
+main: com.lojosho.enchantnow.EnchantNow
+api-version: 1.19
+authors: [ LoJoSho ]
+description: A Minecraft Enchant plugin that handles everything enchanted related, with integrations to popular plugins as well.
+softdepend:
+  - EcoEnchants
+commands:
+  enchantbook:
+    description: "Basic enchantment command"
