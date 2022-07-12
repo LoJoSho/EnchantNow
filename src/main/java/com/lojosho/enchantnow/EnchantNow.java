@@ -17,6 +17,9 @@ public final class EnchantNow extends JavaPlugin {
     private static boolean hasEcoEnchants = false;
     private static EnchantNow instance;
 
+    /**
+     * To those who are viewing this code... well, it ain't the best but it could be better with your help! <3
+     */
     @Override
     public void onEnable() {
         // Plugin startup logic
