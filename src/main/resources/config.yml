@@ -1,6 +1,6 @@
 # We use MiniMessage! https://docs.adventure.kyori.net/minimessage/format.html
 messages:
-  sendBook: "<YELLOW>You have sent an enchanted book!"
+  sendBook: "<YELLOW>You have sent an enchanted book to <player>!"
   sendEnchant: "<YELLOW>You have enchanted an item!"
   noEnchantAir: "<RED>You can not enchant air!"
   sendBookUsage: "<YELLOW>/enchantbook enchant:level,enchant:level,enchant:level (amount) (player)"

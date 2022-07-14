@@ -80,7 +80,9 @@ public class EnchantBookCommand implements CommandExecutor {
             }
             item.setAmount(amount);
             player.getInventory().addItem(item);
-            SendMessageUtil.sendConfigMessage(sender, "messages.sendBook");
+            placeholders =
+                    TagResolver.resolver(Placeholder.parsed("player", player.getName()));
+            SendMessageUtil.sendConfigMessage(sender, "messages.sendBook", placeholders);
             return;
         }
         sender.sendMessage("Improper arguments");

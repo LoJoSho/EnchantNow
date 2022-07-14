@@ -42,13 +42,17 @@ public class SendMessageUtil {
     }
 
     public static void sendConfigMessage(CommandSender sender, String location) {
+        sendConfigMessage(sender, location, TagResolver.empty());
+    }
+
+    public static void sendConfigMessage(CommandSender sender, String location, TagResolver placeholders) {
         String message = EnchantNow.getInstance().getConfig().getString(location);
 
         if (message.length() == 0) {
             return;
         }
 
-        Component chatMessage = MiniMessage.miniMessage().deserialize(message);
+        Component chatMessage = MiniMessage.miniMessage().deserialize(message, placeholders);
         Audience target = BukkitAudiences.create(EnchantNow.getInstance()).sender(sender);
         target.sendMessage(chatMessage);
     }
