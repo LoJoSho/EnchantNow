@@ -78,6 +78,7 @@ public class EnchantCommand implements CommandExecutor {
             for (Enchantment enchant : hashyEnchants.keySet()) {
 
                 if (enchant == null) {
+                    SendMessageUtil.sendStringMessage(player, "Enchantment was null.");
                     return;
                 }
 
