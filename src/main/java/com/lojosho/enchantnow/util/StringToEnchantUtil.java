@@ -62,7 +62,8 @@ public class StringToEnchantUtil {
 
         if (EnchantNow.hasEcoEnchantments()) {
             for (EcoEnchant ench : EcoEnchants.values()) {
-                enchantMap.put(ench.getDisplayName().toUpperCase(Locale.ROOT), ench);
+                enchantMap.put(ench.getKey().toString().toUpperCase(Locale.ROOT).replaceAll(".+:", ""), ench);
+                //EnchantNow.getInstance().getLogger().info("Added " + ench.getKey().toString().replaceAll(".+:", "") + " to the list of enchantments");
             }
         }
 
