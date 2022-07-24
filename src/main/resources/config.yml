@@ -1,3 +1,6 @@
+settings:
+  debug: false
+
 # We use MiniMessage! https://docs.adventure.kyori.net/minimessage/format.html
 messages:
   sendBook: "<YELLOW>You have sent an enchanted book to <player>!"
