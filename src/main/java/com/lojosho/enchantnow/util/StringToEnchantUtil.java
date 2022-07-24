@@ -11,6 +11,7 @@ import org.bukkit.enchantments.Enchantment;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
 
 public class StringToEnchantUtil {
 
@@ -62,8 +63,9 @@ public class StringToEnchantUtil {
 
         if (EnchantNow.hasEcoEnchantments()) {
             for (EcoEnchant ench : EcoEnchants.values()) {
-                enchantMap.put(ench.getKey().toString().toUpperCase(Locale.ROOT).replaceAll(".+:", ""), ench);
-                //EnchantNow.getInstance().getLogger().info("Added " + ench.getKey().toString().replaceAll(".+:", "") + " to the list of enchantments");
+                String enchant = ench.getKey().toString().toUpperCase(Locale.ROOT).replaceAll(".+:", "");
+                enchantMap.put(enchant, ench);
+                SendDebugUtil.sendDebugMessage(enchant + " has been detected and added!", Level.INFO);
             }
         }
 

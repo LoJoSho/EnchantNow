@@ -2,6 +2,7 @@ package com.lojosho.enchantnow.commands;
 
 import com.lojosho.enchantnow.util.EnchantArgProcessing;
 import com.lojosho.enchantnow.util.EnchantItem;
+import com.lojosho.enchantnow.util.SendDebugUtil;
 import com.lojosho.enchantnow.util.SendMessageUtil;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -84,6 +85,7 @@ public class EnchantBookCommand implements CommandExecutor {
             placeholders =
                     TagResolver.resolver(Placeholder.parsed("player", player.getName()));
             SendMessageUtil.sendConfigMessage(sender, "messages.sendBook", placeholders);
+            SendDebugUtil.sendDebugMessage(player.getName() + " has recieved a book from " + sender.getName());
             return;
         }
         sender.sendMessage("Improper arguments");
