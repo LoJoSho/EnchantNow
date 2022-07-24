@@ -1,6 +1,7 @@
 package com.lojosho.enchantnow.commands;
 
 import com.lojosho.enchantnow.EnchantNow;
+import com.lojosho.enchantnow.util.SendMessageUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +13,7 @@ public class EnchantReload implements CommandExecutor {
 
         if (sender.isOp() || sender.hasPermission("enchantnow.reload")) {
             EnchantNow.getInstance().reload();
+            SendMessageUtil.sendConfigMessage(sender, "messages.reloaded");
         }
 
         return false;
