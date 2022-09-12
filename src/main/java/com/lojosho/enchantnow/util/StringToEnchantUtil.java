@@ -23,15 +23,6 @@ public class StringToEnchantUtil {
             enchantMap.put(ench.getKey().toString().toUpperCase(Locale.ROOT).replaceAll(".+:", ""), ench);
             SendDebugUtil.sendDebugMessage(ench + " has been detected and added!", Level.INFO);
         }
-        /*
-        if (EnchantNow.hasEcoEnchantments()) {
-            for (EcoEnchant ench : EcoEnchants.values()) {
-                String enchant = ench.getKey().toString().toUpperCase(Locale.ROOT).replaceAll(".+:", "");
-                enchantMap.put(enchant, ench);
-                SendDebugUtil.sendDebugMessage(enchant + " has been detected and added!", Level.INFO);
-            }
-        }
-         */
 
         for (Enchantment ench : values()) {
             enchantMaxLevel.put(ench, ench.getMaxLevel());
