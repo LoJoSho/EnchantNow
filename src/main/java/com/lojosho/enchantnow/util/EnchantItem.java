@@ -45,11 +45,20 @@ public class EnchantItem {
     private static ItemStack applyEnchant(Enchantment enchantment, int level, ItemStack item) {
         if (item.getType().equals(Material.ENCHANTED_BOOK)) {
             EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
-            meta.addStoredEnchant(enchantment, level, true);
+            if (level > 0) {
+                meta.addStoredEnchant(enchantment, level, true);
+            } else {
+                meta.removeStoredEnchant(enchantment);
+            }
+
             item.setItemMeta(meta);
         } else {
             ItemMeta meta = item.getItemMeta();
-            meta.addEnchant(enchantment, level, true);
+            if (level > 0) {
+                meta.addEnchant(enchantment, level, true);
+            } else {
+                meta.removeEnchant(enchantment);
+            }
             item.setItemMeta(meta);
         }
         return item;
