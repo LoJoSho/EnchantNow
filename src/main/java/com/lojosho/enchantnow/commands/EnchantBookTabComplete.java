@@ -1,14 +1,11 @@
 package com.lojosho.enchantnow.commands;
 
-import com.lojosho.enchantnow.EnchantNow;
 import com.lojosho.enchantnow.util.EnchantLists;
 import com.lojosho.enchantnow.util.IntgerUtil;
-import com.willfp.ecoenchants.enchantments.EcoEnchants;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 

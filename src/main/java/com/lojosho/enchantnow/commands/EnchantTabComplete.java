@@ -1,7 +1,6 @@
 package com.lojosho.enchantnow.commands;
 
 import com.lojosho.enchantnow.util.EnchantLists;
-import com.lojosho.enchantnow.util.IntgerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

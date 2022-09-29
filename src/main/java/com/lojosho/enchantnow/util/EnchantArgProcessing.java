@@ -1,15 +1,8 @@
 package com.lojosho.enchantnow.util;
 
-import com.lojosho.enchantnow.EnchantNow;
-import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
-import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class EnchantArgProcessing {
 

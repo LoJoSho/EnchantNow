@@ -1,7 +1,5 @@
 package com.lojosho.enchantnow.util;
 
-import com.lojosho.enchantnow.EnchantNow;
-import com.willfp.ecoenchants.enchantments.EcoEnchants;
 import org.bukkit.enchantments.Enchantment;
 
 import java.util.ArrayList;
