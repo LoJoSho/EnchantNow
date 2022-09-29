@@ -10,3 +10,4 @@ messages:
   sendEnchantUsage: "<YELLOW>/enchant enchant:level,enchant:level,enchant:level (player)"
   improperArguments: "<RED>Improper Arguments"
   noPermission: "<RED>No permission."
+  reloaded: "<GREEN>EnchantNow Reloaded"
