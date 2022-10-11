@@ -32,8 +32,15 @@ public final class EnchantNow extends JavaPlugin {
         getServer().getPluginCommand("enchantbook").setExecutor(new EnchantBookCommand());
         getServer().getPluginCommand("enchantbook").setTabCompleter(new EnchantBookTabComplete());
 
-        getServer().getPluginCommand("enchant").setExecutor(new EnchantCommand());
-        getServer().getPluginCommand("enchant").setTabCompleter(new EnchantTabComplete());
+        if (getServer().getPluginCommand("enchant") != null) {
+            getServer().getPluginCommand("enchant").setExecutor(new EnchantCommand());
+            getServer().getPluginCommand("enchant").setTabCompleter(new EnchantTabComplete());
+        } else {
+            getLogger().severe("Another plugin is currently using /enchant, use /enchantitem for usage of the plugin.");
+        }
+
+        getServer().getPluginCommand("enchantitem").setExecutor(new EnchantCommand());
+        getServer().getPluginCommand("enchantitem").setTabCompleter(new EnchantTabComplete());
 
         getServer().getPluginCommand("enchantreload").setExecutor(new EnchantReload());
     }

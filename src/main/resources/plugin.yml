@@ -11,6 +11,8 @@ commands:
     description: "Basic enchantment command"
   enchant:
     description: "An enchant command"
+  enchantitem:
+    description: "Alternative to the /enchant command"
   enchantreload:
     description: "Reloads the plugin"
 permissions:
