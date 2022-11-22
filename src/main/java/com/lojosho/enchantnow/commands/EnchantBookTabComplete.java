@@ -39,21 +39,20 @@ public class EnchantBookTabComplete implements TabCompleter {
                 }
             }
 
-            StringUtil.copyPartialMatches(processedArg, processedEnchants, completitions);
+            StringUtil.copyPartialMatches(args[0], completitions, final_completitions);
 
         }
         else if (args.length == 2) {
-
-            List<String> possibleNumbers = IntgerUtil.getPossibleNumbers();
-            StringUtil.copyPartialMatches(args[1], possibleNumbers, completitions);
+            completitions.add("<amount>");
+            StringUtil.copyPartialMatches(args[1], completitions, final_completitions);
         }
         else if (args.length == 3) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 completitions.add(player.getName());
             }
+            StringUtil.copyPartialMatches(args[2], completitions, final_completitions);
         }
 
-        StringUtil.copyPartialMatches(args[0], completitions, final_completitions);
         return final_completitions;
     }
 }

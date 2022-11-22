@@ -38,14 +38,15 @@ public class EnchantTabComplete implements TabCompleter {
                     completitions.add(a);
                 }
             }
+            StringUtil.copyPartialMatches(args[0], completitions, final_completitions);
         }
         else if (args.length == 2) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 completitions.add(player.getName());
             }
+            StringUtil.copyPartialMatches(args[1], completitions, final_completitions);
         }
 
-        StringUtil.copyPartialMatches(args[0], completitions, final_completitions);
         return final_completitions;
     }
 }
