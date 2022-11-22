@@ -18,6 +18,7 @@ public class EnchantTabComplete implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
         List<String> completitions = new ArrayList<>();
+        List<String> final_completitions = new ArrayList<>();
 
         if (args.length == 1) {
 
@@ -37,9 +38,6 @@ public class EnchantTabComplete implements TabCompleter {
                     completitions.add(a);
                 }
             }
-
-            StringUtil.copyPartialMatches(processedArg, processedEnchants, completitions);
-
         }
         else if (args.length == 2) {
             for (Player player : Bukkit.getOnlinePlayers()) {
@@ -47,7 +45,7 @@ public class EnchantTabComplete implements TabCompleter {
             }
         }
 
-        Collections.sort(completitions);
-        return completitions;
+        StringUtil.copyPartialMatches(args[0], completitions, final_completitions);
+        return final_completitions;
     }
 }

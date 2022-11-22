@@ -18,6 +18,7 @@ public class EnchantBookTabComplete implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
         List<String> completitions = new ArrayList<>();
+        List<String> final_completitions = new ArrayList<>();
 
         if (args.length == 1) {
 
@@ -52,7 +53,7 @@ public class EnchantBookTabComplete implements TabCompleter {
             }
         }
 
-        Collections.sort(completitions);
-        return completitions;
+        StringUtil.copyPartialMatches(args[0], completitions, final_completitions);
+        return final_completitions;
     }
 }
